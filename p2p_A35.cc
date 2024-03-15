@@ -81,6 +81,14 @@ int main(int argc, char *argv[]){
 	
 	// Install Client Application on Node 0
 	ApplicationContainer clientApp = echoClient.Install(nodes.Get(0));
+
+	// Enables Routing between two networks 10.0.0.0 and 20.0.0.0
+	Ipv4GlobalRoutingHelper::PopulateRoutingTables();
+
+	// for Running the code
+	AnimationInterface anim("p2pAniExcer.xml");
+	anim.SetConstantPosition(nodes.Get(0),20.0,30.0);
+	anim.SetConstantPosition(nodes.Get(1),40.0,30.0);
 	
 	// Configure Start and Stop Time
 	clientApp.Start(Seconds(2.0));
