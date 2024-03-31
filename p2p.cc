@@ -8,19 +8,15 @@
 #include "ns3/point-to-point-module.h"
 #include "ns3/applications-module.h"
 #include "ns3/netanim-module.h"
-#include "ns3/csma-module.h"
-#include "ns3/ipv4-global-routing-helper.h"
 
 // Adding namespace declaration
 using namespace ns3;
 
 //Define log component where log msgs will be saved
-NS_LOG_COMPONENT_DEFINE("p2pExercise");
+NS_LOG_COMPONENT_DEFINE("p2pExample");
 
-// Main function Created Onkar Malawade
+// Main function
 int main(int argc, char *argv[]){
-	// declare number of nodes in bus Topology
-	
 	// read the command line arguments
 	CommandLine cmd(__FILE__);
 	
@@ -60,7 +56,7 @@ int main(int argc, char *argv[]){
 	// configure network IP address and subnet mask for network
 	Ipv4AddressHelper address;
 	// set data
-	address.SetBase("40.120.80.0","255.255.240.0");
+	address.SetBase("10.0.0.0","255.0.0.0");
 	
 	// Assign IP addresses to the interfaces of netDevices
 	Ipv4InterfaceContainer interfaces = address.Assign(devices);
@@ -91,11 +87,8 @@ int main(int argc, char *argv[]){
 	clientApp.Start(Seconds(2.0));
 	clientApp.Stop(Seconds(10.0));
 	
-	// Enables Routing IP Address:- "40.120.80.0"
-	Ipv4GlobalRoutingHelper::PopulateRoutingTables();
-
-	// for Running the code 4056
-	AnimationInterface anim("p2pAniExcer.xml");
+	// for Running the code
+	AnimationInterface anim("p2pAnimation.xml");
 	anim.SetConstantPosition(nodes.Get(0),20.0,30.0);
 	anim.SetConstantPosition(nodes.Get(1),40.0,30.0);
 	
