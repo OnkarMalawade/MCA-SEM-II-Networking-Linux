@@ -115,7 +115,7 @@ int main(int argc, char *argv[]){
 	pointToPoint.EnablePcapAll("star");
 
 	// Animate the Star Topology 	
-	AnimationInterface anim("hub_star_A33.xml");
+	AnimationInterface anim("hub_star_A37.xml");
 	star.BoundingBox(1, 1, 100, 100);
 	
 	// Simulation on Run and start
